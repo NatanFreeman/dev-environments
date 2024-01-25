@@ -1,5 +1,5 @@
 # dev-environment
-This repo contains the Dockerfiles which I use to set up my Docker dev environments. Right now there are two environments, one for Rust and one for Python. They can be ran like so.
+This repo contains the Dockerfiles which I use to set up my Docker dev environments. Right now there are two environments, [one for Rust](https://hub.docker.com/repository/docker/natanfreeman/dev-env-rust/general) and [one for Python AI development](https://hub.docker.com/repository/docker/natanfreeman/dev-env-python/general). They can be ran like so.
 
 ## Rust
 ```bash

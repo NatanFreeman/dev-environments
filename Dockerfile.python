@@ -8,7 +8,8 @@ RUN apt-get update && apt-get install -y \
     neovim \
     curl \
     neofetch \
-    cmake
+    cmake \
+    fd-find
 
 ENV DEBIAN_FRONTEND=noninteractive
 
