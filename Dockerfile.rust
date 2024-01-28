@@ -1,29 +1,12 @@
-FROM ubuntu:latest
+FROM base-env
 
-RUN apt-get update && apt-get install -y sudo
-
-# Create default user and password
-RUN useradd -ms /bin/bash devuser -u 1000
-RUN echo "devuser:password" | chpasswd
-RUN echo 'devuser ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER devuser
 
 RUN sudo apt-get install -y \
-    git \
-    make \
-    bat \
-    ripgrep \
-    neovim \
-    curl \
     libc6 \
     libc6-dev \
-    build-essential \
-    neofetch \
-    cmake \
-    pkg-config \
-    fd-find \
-    net-tools \
-    iproute2
+    build-essential
+RUN sudo apt-get install -y cmake
 
 # Install rustup + wasm target
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
@@ -37,10 +20,6 @@ ENV PATH=$PATH:/home/devuser/.cargo/bin
 
 RUN cargo install onefetch
 RUN cargo install gitui
-
-RUN sudo apt-get install -y openssh-server
-RUN sudo mkdir /var/run/sshd
-EXPOSE 22
 
 USER root
 

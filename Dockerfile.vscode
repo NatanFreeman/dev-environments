@@ -1,0 +1,9 @@
+FROM base-env
+USER devuser
+
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+COPY code-server/config.yaml /home/devuser/.config/code-server/config.yaml
+EXPOSE 8080
+EXPOSE 22
+
+CMD ["code-server"]
