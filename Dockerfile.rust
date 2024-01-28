@@ -21,10 +21,15 @@ ENV PATH=$PATH:/home/devuser/.cargo/bin
 RUN cargo install onefetch
 RUN cargo install gitui
 
-RUN curl -fsSL https://code-server.dev/install.sh | sh
-COPY code-server/config.yaml /home/devuser/.config/code-server/config.yaml
-EXPOSE 8080
-
+ENV EXTENSIONS_GALLERY='{"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery"}'
+RUN code-server --install-extension panicbit.cargo
+RUN code-server --install-extension vadimcn.vscode-lldb
+RUN code-server --install-extension serayuzgur.crates
+RUN code-server --install-extension tamasfe.even-better-toml
+RUN code-server --install-extension revng.llvm-ir
+RUN code-server --install-extension rust-lang.rust-analyzer
+RUN code-server --install-extension belfz.search-crates-io
+RUN code-server --install-extension wgsl-analyzer.wgsl-analyzer
 USER root
 
 CMD ["/usr/sbin/sshd", "-D"]

@@ -17,8 +17,12 @@ RUN sudo apt-get install -y \
     neofetch \
     fd-find \
     net-tools \
-    iproute2 \
-    iputils-ping
+    iproute2
+
+# vscode setup
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+COPY code-server/config.yaml /home/devuser/.config/code-server/config.yaml
+EXPOSE 8080
 
 RUN sudo apt-get install -y openssh-server
 RUN sudo mkdir /var/run/sshd
