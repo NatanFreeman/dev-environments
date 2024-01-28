@@ -21,6 +21,10 @@ ENV PATH=$PATH:/home/devuser/.cargo/bin
 RUN cargo install onefetch
 RUN cargo install gitui
 
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+COPY code-server/config.yaml /home/devuser/.config/code-server/config.yaml
+EXPOSE 8080
+
 USER root
 
 CMD ["/usr/sbin/sshd", "-D"]
