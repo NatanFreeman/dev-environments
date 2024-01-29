@@ -27,3 +27,17 @@ EXPOSE 8080
 RUN sudo apt-get install -y openssh-server
 RUN sudo mkdir /var/run/sshd
 EXPOSE 22
+
+RUN code-server --install-extension streetsidesoftware.code-spell-checker
+RUN code-server --install-extension usernamehw.errorlens
+RUN code-server --install-extension GrapeCity.gc-excelviewer
+RUN code-server --install-extension file-icons.file-icons
+RUN code-server --install-extension cweijan.git-history-plus
+RUN code-server --install-extension codezombiech.gitignore
+RUN code-server --install-extension ms-vscode.hexeditor
+RUN code-server --install-extension sdras.night-owl
+RUN code-server --install-extension christian-kohler.path-intellisense
+RUN code-server --install-extension hbenl.vscode-test-explorer
+RUN code-server --install-extension wayou.vscode-todo-highlight
+RUN code-server --install-extension redhat.vscode-xml
+RUN code-server --install-extension redhat.vscode-yaml

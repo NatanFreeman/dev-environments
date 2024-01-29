@@ -26,6 +26,7 @@ RUN code-server --install-extension tamasfe.even-better-toml
 RUN code-server --install-extension rust-lang.rust-analyzer
 RUN code-server --install-extension belfz.search-crates-io
 RUN code-server --install-extension vadimcn.vscode-lldb
+RUN code-server --install-extension Swellaby.vscode-rust-test-adapter
 USER root
 
 CMD ["/usr/sbin/sshd", "-D"]
