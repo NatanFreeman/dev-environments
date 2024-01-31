@@ -3,31 +3,17 @@ This repo contains the Dockerfiles which I use to set up my Docker dev environme
 
 The containers come with a default user called `devuser` with the password `password`.They supports connection via SSH.
 
-The containers are based on `Dockerfile.base`. Building it is required to build the rest.
+# Building
+Run `docker-compose build` to build the images.
 
-## Base
-```bash
-docker build -t base-env -f Dockerfile.base .
-```
-
-## Rust
-### Building
-```bash
-docker build -t dev-env-rust -f Dockerfile.rust .
-```
-### Connection via SSH
-```bash
-docker run -p 0.0.0.0:2222:22 -p 0.0.0.0:8080:8080 dev-env-rust
-ssh devuser@localhost -p 2222
-```
-
+# Running
 ## Python
-### Building
 ```bash
-docker build -t dev-env-python -f Dockerfile.python .
-```
-### Connection via SSH
-```bash
-docker run -p 127.0.0.1:2223:22 dev-env-python
+docker-compose up --force-recreate python
 ssh devuser@localhost -p 2223
+```
+## Rust
+```bash
+docker-compose up --force-recreate rust
+ssh devuser@localhost -p 2222
 ```

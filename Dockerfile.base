@@ -22,6 +22,8 @@ RUN sudo apt-get install -y \
 # vscode setup
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 COPY code-server/config.yaml /home/devuser/.config/code-server/config.yaml
+RUN mkdir -p ~/.local/share/code-server
+COPY code-server/.vscode ~/.local/share/code-server/.vscode
 EXPOSE 8080
 
 RUN sudo apt-get install -y openssh-server
@@ -31,7 +33,7 @@ EXPOSE 22
 RUN code-server --install-extension streetsidesoftware.code-spell-checker
 RUN code-server --install-extension usernamehw.errorlens
 RUN code-server --install-extension GrapeCity.gc-excelviewer
-RUN code-server --install-extension file-icons.file-icons
+RUN code-server --install-extension PKief.material-icon-theme
 RUN code-server --install-extension cweijan.git-history-plus
 RUN code-server --install-extension codezombiech.gitignore
 RUN code-server --install-extension ms-vscode.hexeditor

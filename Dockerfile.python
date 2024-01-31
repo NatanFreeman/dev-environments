@@ -5,14 +5,18 @@ RUN sudo apt-get install -y gnupg2 --no-install-recommends
 RUN sudo add-apt-repository ppa:deadsnakes/ppa
 RUN sudo apt-get update
 
-RUN sudo TZ=America/New_York apt-get install -y python3.9 python3-pip --no-install-recommends
+RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3.9 python3-pip --no-install-recommends
 
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1
+RUN sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1
 
 RUN sudo apt-get install -y python3.9 python3-pip python3.9-distutils --no-install-recommends
 RUN python3 -m pip install --upgrade pip
 
 RUN pip3 install numpy pandas tensorflow torch icecream tqdm result ipython ruff
+RUN code-server --install-extension ms-python.python
+RUN code-server --install-extension KevinRose.vsc-python-indent
+RUN code-server --install-extension charliermarsh.ruff
+RUN code-server --install-extension njpwerner.autodocstring
 
 USER root
 
